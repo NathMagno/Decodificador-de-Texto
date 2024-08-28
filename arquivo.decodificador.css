@@ -1,0 +1,41 @@
+icador de Texto Base64
+/* Estilos personalizados para a página de codificação e decodificação */  
+body {  
+    background-color: #f3f4f6; /* Cor de fundo suave */  
+}  
+
+.container {  
+    max-width: 600px; /* Largura máxima do container */  
+    margin: auto; /* Centraliza o container */  
+    padding: 20px; /* Espaçamento interno */  
+    background-color: #ffffff; /* Cor de fundo do container */  
+    border-radius: 8px; /* Bordas arredondadas */  
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */  
+}  
+
+h1 {  
+    font-size: 1.5rem; /* Tamanho da fonte do título */  
+    font-weight: bold; /* Negrito */  
+    margin-bottom: 1rem; /* Espaçamento inferior */  
+}  
+
+textarea {  
+    width: 100%; /* Largura total */  
+    padding: 0.5rem; /* Espaçamento interno */  
+    border: 1px solid #d1d5db; /* Borda cinza */  
+    border-radius: 0.375rem; /* Bordas arredondadas */  
+    margin-bottom: 1rem; /* Espaçamento inferior */  
+}  
+
+button {  
+    padding: 0.5rem 1rem; /* Espaçamento interno do botão */  
+    border-radius: 0.375rem; /* Bordas arredondadas */  
+    cursor: pointer; /* Cursor de ponteiro */  
+}  
+
+#outputText {  
+    border: 1px solid #d1d5db; /* Borda cinza */  
+    padding: 0.5rem; /* Espaçamento interno */  
+    border-radius: 0.375rem; /* Bordas arredondadas */  
+    background-color: #e5e7eb; /* Cor de fundo do resultado */  
+}  

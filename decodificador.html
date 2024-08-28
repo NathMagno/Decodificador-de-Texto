@@ -1,0 +1,77 @@
+<!DOCTYPE html>  
+<html lang="pt-br">  
+<head>  
+    <meta charset="utf-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>Codificador e Decodificador de Texto</title>  
+    <script src="https://cdn.tailwindcss.com"></script>  
+</head>  
+<body class="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">  
+    <div class="bg-white p-6 rounded shadow-md w-full max-w-3xl flex">  
+        <div class="flex-1 mr-2">  
+            <img src="https://decode-navy.vercel.app/assets/images/robot.png" alt="Robô Decodificador" class="w-24 h-24 mx-auto mb-4" />  
+            <h1 class="text-xl font-bold mb-4 text-center">Codificador e Decodificador de Texto</h1>  
+            <textarea id="inputText" class="w-full p-2 border rounded mb-4" rows="4" placeholder="Digite seu texto..."></textarea>  
+            <div class="flex mb-4">  
+                <button id="encodeButton" class="bg-green-500 text-white p-2 rounded mr-2">Codificar</button>  
+                <button id="decodeButton" class="bg-blue-500 text-white p-2 rounded">Decodificar</button>  
+            </div>  
+        </div>  
+        <div class="flex flex-col flex-1">  
+            <h2 class="mt-4 font-semibold text-center">Resultado:</h2>  
+            <p id="outputText" class="border p-4 rounded bg-gray-200 mb-2 flex-1"></p>  
+            <div class="flex flex-col">  
+                <button id="copyButton" class="bg-purple-500 text-white p-2 rounded hidden mb-2">Copiar Resultado</button>  
+                <button id="clearButton" class="bg-red-500 text-white p-2 rounded hidden">Limpar Texto</button>  
+            </div>  
+        </div>  
+    </div>  
+    <footer class="text-center text-gray-600 mt-4">  
+        <p>feito por nathalia</p>  
+    </footer>  
+    <script>  
+        document.getElementById('encodeButton').onclick = function() {  
+            const inputTextElement = document.getElementById('inputText');  
+            const input = inputTextElement.value;  
+            if (/[^a-z0-9\s]/.test(input)) {  
+                document.getElementById('outputText').innerText = 'Erro: apenas letras minúsculas, números e espaços são aceitos.';  
+                document.getElementById('copyButton').classList.add('hidden');  
+                document.getElementById('clearButton').classList.add('hidden');  
+                return;  
+            }  
+            const encoded = btoa(input);  
+            document.getElementById('outputText').innerText = encoded;  
+            document.getElementById('copyButton').classList.remove('hidden');  
+            document.getElementById('clearButton').classList.add('hidden');  
+            inputTextElement.value = ''; // Limpa o campo de texto após codificar  
+        };  
+
+        document.getElementById('decodeButton').onclick = function() {  
+            const input = document.getElementById('inputText').value;  
+            try {  
+                const decoded = atob(input);  
+                document.getElementById('outputText').innerText = decoded;  
+                document.getElementById('copyButton').classList.remove('hidden');  
+                document.getElementById('clearButton').classList.remove('hidden');  
+            } catch (e) {  
+                document.getElementById('outputText').innerText = 'Erro ao decodificar o texto.';  
+                document.getElementById('copyButton').classList.add('hidden');  
+                document.getElementById('clearButton').classList.add('hidden');  
+            }  
+        };  
+
+        document.getElementById('copyButton').onclick = function() {  
+            const outputText = document.getElementById('outputText').innerText;  
+            navigator.clipboard.writeText(outputText);  
+        };  
+
+        document.getElementById('clearButton').onclick = function() {  
+            document.getElementById('inputText').value = '';  
+            document.getElementById('outputText').innerText = '';  
+            document.getElementById('copyButton').classList.add('hidden');  
+            document.getElementById('clearButton').classList.add('hidden');  
+            document.getElementById('inputText').placeholder = "Digite seu texto...";  
+        };  
+    </script>  
+</body>  
+</html>
